@@ -68,9 +68,9 @@ public class FormCastroView extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1))
+                    .addComponent(jPasswordField1)
+                    .addComponent(jTextField1))
                 .addGap(196, 196, 196))
         );
         layout.setVerticalGroup(
