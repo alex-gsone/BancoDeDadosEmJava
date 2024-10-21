@@ -16,7 +16,12 @@ import java.sql.SQLException;
 public class Conexao {
     
     public Connection getConnection() throws SQLException{
-        Connection conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cursojava", "postgres", "postgres");
+        String url = "jdbc:postgresql://localhost:5432/cursojava";
+        String user = "postgres";
+        String password = "postgres";
+        
+ //     Estabelece a conexão com o banco de dados
+        Connection conexao = DriverManager.getConnection(url, user, password);       
         return conexao;        
     } 
 }

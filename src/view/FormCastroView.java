@@ -4,6 +4,12 @@
  * and open the template in the editor.
  */
 package view;
+import dao.Conexao;
+
+import com.sun.jdi.connect.spi.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -110,7 +116,15 @@ public class FormCastroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        
+        try {
+            Connection conexao = (Connection) new Conexao().getConnection();
+            
+            String sql = "insert into usuario (usuario, senha) values('Diego', '654321');";
+            conexao.prepareStatement(sql);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FormCastroView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
