@@ -121,7 +121,7 @@ public class FormCastroView extends javax.swing.JFrame {
             Connection conexao = (Connection) new Conexao().getConnection();
             
             String sql = "insert into usuario (usuario, senha) values('Diego', '654321');";
-            conexao.
+            conexao.prepareStatement(sql);
             
         } catch (SQLException ex) {
             Logger.getLogger(FormCastroView.class.getName()).log(Level.SEVERE, null, ex);
