@@ -5,6 +5,7 @@
  */
 package view;
 import dao.Conexao;
+import java.beans.Statement;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -121,7 +122,11 @@ public class FormCastroView extends javax.swing.JFrame {
             Connection conexao = (Connection) new Conexao().getConnection();
             
             String sql = "insert into usuario (usuario, senha) values('Diego', '654321');";
-            conexao.prepareStatement(sql);
+            
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.execute();
+            
+            conexao.close();
             
         } catch (SQLException ex) {
             Logger.getLogger(FormCastroView.class.getName()).log(Level.SEVERE, null, ex);
