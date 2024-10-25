@@ -6,7 +6,7 @@
 package view;
 import dao.Conexao;
 
-import com.sun.jdi.connect.spi.Connection;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
