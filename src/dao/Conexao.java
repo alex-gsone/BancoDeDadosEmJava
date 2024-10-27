@@ -18,7 +18,7 @@ public class Conexao {
     public Connection getConnection() throws SQLException{
         String url = "jdbc:postgresql://localhost:5432/cursojava";
         String user = "postgres";
-        String password = "postgres";
+        String password = "777888";
         
  //     Estabelece a conexão com o banco de dados
         Connection conexao = DriverManager.getConnection(url, user, password);       
