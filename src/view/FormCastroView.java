@@ -125,7 +125,6 @@ public class FormCastroView extends javax.swing.JFrame {
             
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.execute();
-            
             conexao.close();
             
         } catch (SQLException ex) {
