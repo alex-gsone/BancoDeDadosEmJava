@@ -118,18 +118,17 @@ public class FormCastroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        try {
-            Connection conexao = (Connection) new Conexao().getConnection();
-            
-            String sql = "insert into usuario (usuario, senha) values('Diego', '654321');";
-            
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.execute();
-            conexao.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(FormCastroView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String sql = "INSERT INTO usuario (usuario, senha) VALUES (?, ?)";
+    try (Connection conexao = new Conexao().getConnection();
+         PreparedStatement statement = conexao.prepareStatement(sql)) {
+        
+        statement.setString(1, "Diego");
+        statement.setString(2, "654321");
+        statement.execute();
+        
+    } catch (SQLException ex) {
+        Logger.getLogger(FormCastroView.class.getName()).log(Level.SEVERE, "Erro ao inserir dados no usuário", ex);
+    }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
