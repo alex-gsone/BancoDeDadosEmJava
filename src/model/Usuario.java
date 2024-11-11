@@ -10,5 +10,6 @@ package model;
  * @author alex
  */
 public class Usuario {
+    private int id; 
     
 }
