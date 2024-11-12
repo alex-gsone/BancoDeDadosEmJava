@@ -8,6 +8,9 @@ package dao;
 /**
  *
  * @author alex
+ * 
+ * Essa classe usuarioDAO será responsável por criar, 
+ * deletar e manipular um usuário através do banco de dados.
  */
 public class UsuarioDAO {
     
