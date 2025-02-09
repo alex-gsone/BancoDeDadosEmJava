@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 package dao;
+import java.sql.Connection;    
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Usuario;
+import view.FormCastroView;
 
 /**
  *
@@ -13,5 +20,20 @@ package dao;
  * deletar e manipular um usuário através do banco de dados.
  */
 public class UsuarioDAO {
+    
+    private final Connection connection; 
+
+    public UsuarioDAO(Connection connection) {
+        this.connection = connection;
+    }
+    public void insert(Usuario usuario) throws SQLException{
+
+            String sql = "insert into usuario (usuario, senha) values('Diego', '654321');";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.execute();
+            connection.close();
+
+    } 
+    
     
 }
