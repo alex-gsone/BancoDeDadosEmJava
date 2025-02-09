@@ -28,7 +28,7 @@ public class UsuarioDAO {
     }
     public void insert(Usuario usuario) throws SQLException{
 
-            String sql = "insert into usuario (usuario, senha) values('Diego', '654321');";
+            String sql = "insert into usuario (usuario, senha) values('"+ usuario.getUsuario() +"', '"+ usuario.getSenha() +"');";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
             connection.close();

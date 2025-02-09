@@ -5,6 +5,7 @@
  */
 package view;
 import dao.Conexao;
+import dao.UsuarioDAO;
 import java.beans.Statement;
 
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.PreparedStatement;
+import model.Usuario;
 
 /**
  *
@@ -118,7 +120,18 @@ public class FormCastroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Usuario usuarioXande = new Usuario("Xande", "54321");
+       
+        try {
+            Connection conexao = new Conexao().getConnection();
+            UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+            usuarioDao.insert(usuarioXande);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FormCastroView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
