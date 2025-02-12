@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 import model.Usuario;
 
 /**
@@ -136,6 +137,8 @@ public class FormCastroView extends javax.swing.JFrame {
             Connection conexao = new Conexao().getConnection();
             UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
             usuarioDao.insert(usuarioXande);
+            
+            JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso!");
             
         } catch (SQLException ex) {
             Logger.getLogger(FormCastroView.class.getName()).log(Level.SEVERE, null, ex);
