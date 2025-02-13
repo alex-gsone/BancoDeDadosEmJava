@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import controller.FormCadastroController;
 import dao.Conexao;
 import dao.UsuarioDAO;
 import java.beans.Statement;
@@ -14,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import model.Usuario;
 
 /**
@@ -22,11 +25,14 @@ import model.Usuario;
  */
 public class FormCastroView extends javax.swing.JFrame {
 
+    private final FormCadastroController controller;
+
     /**
      * Creates new form FormCastroView
      */
     public FormCastroView() {
         initComponents();
+        controller = new FormCadastroController(this);
     }
 
     /**
@@ -127,24 +133,7 @@ public class FormCastroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFieldSenhaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-       String usuario = jTextFieldUsuario.getText();
-       String senha = jPasswordFieldSenha.getText();
-       
-       Usuario usuarioXande = new Usuario(usuario, senha);
-       
-        try {
-            Connection conexao = new Conexao().getConnection();
-            UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-            usuarioDao.insert(usuarioXande);
-            
-            JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso!");
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(FormCastroView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-       
+      controller.salvaUsuario();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
@@ -186,6 +175,33 @@ public class FormCastroView extends javax.swing.JFrame {
         });
     }
 
+    public JPasswordField getjPasswordFieldSenha() {
+        return jPasswordFieldSenha;
+    }
+
+    public void setjPasswordFieldSenha(JPasswordField jPasswordFieldSenha) {
+        this.jPasswordFieldSenha = jPasswordFieldSenha;
+    }
+
+    public JTextField getjTextFieldId() {
+        return jTextFieldId;
+    }
+
+    public void setjTextFieldId(JTextField jTextFieldId) {
+        this.jTextFieldId = jTextFieldId;
+    }
+
+    public JTextField getjTextFieldUsuario() {
+        return jTextFieldUsuario;
+    }
+
+    public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
+        this.jTextFieldUsuario = jTextFieldUsuario;
+    }
+
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -196,3 +212,5 @@ public class FormCastroView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
 }
+
+
