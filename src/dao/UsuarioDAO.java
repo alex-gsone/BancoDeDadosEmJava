@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package dao;
-import java.sql.Connection;    
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -15,25 +16,29 @@ import view.FormCastroView;
 /**
  *
  * @author alex,
- * 
- * Essa classe usuarioDAO será responsável por criar, 
- * deletar e manipular um usuário através do banco de dados.
+ *
+ * Essa classe usuarioDAO será responsável por criar, deletar e manipular um
+ * usuário através do banco de dados.
  */
 public class UsuarioDAO {
-    
-    private final Connection connection; 
+
+    private final Connection connection;
 
     public UsuarioDAO(Connection connection) {
         this.connection = connection;
     }
-    public void insert(Usuario usuario) throws SQLException{
 
-            String sql = "insert into usuario (usuario, senha) values('"+ usuario.getUsuario() +"', '"+ usuario.getSenha() +"');";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.execute();
-            connection.close();
+    public void insert(Usuario usuario) throws SQLException {
 
-    } 
-    
-    
+        String sql = "insert into usuario (usuario, senha) values('" + usuario.getUsuario() + "', '" + usuario.getSenha() + "');";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.execute();
+        connection.close();
+
+    }
+
+    public void existePorUsuarioESenha(Usuario usuario) {
+        
+    }
+
 }
