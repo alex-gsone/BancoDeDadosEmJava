@@ -8,6 +8,8 @@ package controller;
 import dao.Conexao;
 import dao.UsuarioDAO;
 import java.sql.Connection;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import model.Usuario;
 import view.LoginView;
 import view.MenuView;
@@ -24,24 +26,27 @@ public class LoginController {
         this.view = view;
     }
 
-    public void autenticar() {
+    public void autenticar() throws SQLException {
         //buscar um usuário da view
 
         String usuario = view.getjTextFieldUsuario().getText();
         String senha = view.getjPasswordFieldSenha().getText();
 
         Usuario usuarioAutenticar = new Usuario(usuario, senha);
-        
+
         //Verificar se existe no banco de dados
         Connection conexao = new Conexao().getConnection();
         UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
 
-        usuarioDao.existePorUsuarioESenha(usuarioAutenticar);
+        boolean existe = usuarioDao.existeNoBancoPorUsuarioESenha(usuarioAutenticar);
         // se direcionar no menu
-        
+        if (existe) {
+            MenuView telaDeMenu = new MenuView();
+            telaDeMenu.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(view, "Usuário ou senha inválidos!");
+        }
 
-        MenuView telaDeMenu = new MenuView();
-        telaDeMenu.setVisible(true);
     }
 
 }
