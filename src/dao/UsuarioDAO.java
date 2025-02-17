@@ -32,15 +32,22 @@ public class UsuarioDAO {
     public void insert(Usuario usuario) throws SQLException {
 
         String sql = "insert into usuario (usuario, senha) values(?, ?);";
-
         PreparedStatement statement = connection.prepareStatement(sql);
-        
+
         statement.setString(1, usuario.getUsuario());
         statement.setString(2, usuario.getSenha());
-
         statement.execute();
-        connection.close();
+    }
 
+    public void update(Usuario usuario) throws SQLException {
+        
+        String sql = "update usuario set usuario = ?, senha = ? where id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, usuario.getUsuario());
+        statement.setString(2, usuario.getSenha());
+        statement.setInt(3, usuario.getId());
+        statement.execute();
     }
 
     public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
