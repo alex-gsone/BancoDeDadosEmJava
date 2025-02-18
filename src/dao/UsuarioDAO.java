@@ -49,6 +49,14 @@ public class UsuarioDAO {
         statement.setInt(3, usuario.getId());
         statement.execute();
     }
+    
+    public void insertOrUpdate (Usuario usuario) throws SQLException{
+        if(usuario.getId() > 0){
+            update(usuario);
+        }else{
+            insert(usuario);
+        }
+    }
 
     public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
         String sql = "select * from usuario where usuario = ? and senha = ?";
