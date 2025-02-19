@@ -40,7 +40,7 @@ public class UsuarioDAO {
     }
 
     public void update(Usuario usuario) throws SQLException {
-        
+
         String sql = "update usuario set usuario = ?, senha = ? where id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -49,13 +49,21 @@ public class UsuarioDAO {
         statement.setInt(3, usuario.getId());
         statement.execute();
     }
-    
-    public void insertOrUpdate (Usuario usuario) throws SQLException{
-        if(usuario.getId() > 0){
+
+    public void insertOrUpdate(Usuario usuario) throws SQLException {
+        if (usuario.getId() > 0) {
             update(usuario);
-        }else{
+        } else {
             insert(usuario);
         }
+    }
+
+    public void delete(Usuario usuario) throws SQLException {
+        String sql = "DELETE FROM usuario WHERE id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setInt(1, usuario.getId());
+        statement.execute();
     }
 
     public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
