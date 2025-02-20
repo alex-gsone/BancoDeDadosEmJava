@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Usuario;
@@ -64,6 +65,25 @@ public class UsuarioDAO {
 
         statement.setInt(1, usuario.getId());
         statement.execute();
+    }
+
+    public ArrayList<Usuario> selectAll() throws SQLException {
+        String sql = "SELECT * FROM usuario;";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        statement.execute();
+        ResultSet resultSet = statement.getResultSet();
+
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String usuario = resultSet.getString("usuario");
+            String senha = resultSet.getString("senha");
+
+            Usuario usuarioComDadosDoBanco = new Usuario(id, usuario, senha);
+            usuarios.add(usuarioComDadosDoBanco);
+        }
+        return usuarios;
     }
 
     public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
