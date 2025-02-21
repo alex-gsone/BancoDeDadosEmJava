@@ -85,6 +85,17 @@ public class UsuarioDAO {
         }
         return usuarios;
     }
+    
+    public Usuario selectPorId(Usuario usuario) throws SQLException{
+        String sql = "SELECT * FROM usuario WHERE id = ? ;";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        
+        statement.setInt(1, usuario.getId());
+        statement.execute();
+        
+        return 
+        
+    }
 
     public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
         String sql = "select * from usuario where usuario = ? and senha = ?";
