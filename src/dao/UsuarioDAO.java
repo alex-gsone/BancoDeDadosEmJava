@@ -71,6 +71,10 @@ public class UsuarioDAO {
         String sql = "SELECT * FROM usuario;";
         PreparedStatement statement = connection.prepareStatement(sql);
 
+        return pesquisa(statement);
+    }
+
+    private ArrayList<Usuario> pesquisa(PreparedStatement statement) throws SQLException {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         statement.execute();
         ResultSet resultSet = statement.getResultSet();
@@ -85,16 +89,14 @@ public class UsuarioDAO {
         }
         return usuarios;
     }
-    
-    public Usuario selectPorId(Usuario usuario) throws SQLException{
+
+    public Usuario selectPorId(Usuario usuario) throws SQLException {
         String sql = "SELECT * FROM usuario WHERE id = ? ;";
         PreparedStatement statement = connection.prepareStatement(sql);
-        
         statement.setInt(1, usuario.getId());
-        statement.execute();
-        
-        return 
-        
+
+        return pesquisa(statement).get(0);
+
     }
 
     public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
