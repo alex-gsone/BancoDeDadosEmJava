@@ -5,6 +5,9 @@
  */
 package view;
 
+import com.sun.jdi.connect.spi.Connection;
+import dao.Conexao;
+
 /**
  *
  * @author alex
@@ -66,7 +69,7 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
+        Connection conexao = new Conexao().getConnection();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
