@@ -7,9 +7,11 @@ package view;
 
 import com.sun.jdi.connect.spi.Connection;
 import dao.Conexao;
+import dao.UsuarioDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Usuario;
 
 /**
  *
@@ -73,8 +75,15 @@ public class MenuView extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         try {
-            Connection conexao = (Connection) new Conexao().getConnection();
+            Connection conexao = (Connection) new Conexao().getConnection();            
+            UsuarioDAO usuarioDao = new UsuarioDAO((java.sql.Connection) conexao);
             
+            //Teste Insert
+            Usuario usuarioInsert = new Usuario("testeUsuarioInsert", "654321");
+            
+            //Teste Select Id
+            //Teste Delete
+            //Teste Select all
             
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
