@@ -30,7 +30,7 @@ public class UsuarioDAO {
         this.connection = connection;
     }
 
-    public void insert(Usuario usuario) throws SQLException {
+    public Usuario insert(Usuario usuario) throws SQLException {
 
         String sql = "insert into usuario (usuario, senha) values(?, ?);";
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -38,6 +38,9 @@ public class UsuarioDAO {
         statement.setString(1, usuario.getUsuario());
         statement.setString(2, usuario.getSenha());
         statement.execute();
+        
+        return usuario;
+        
     }
 
     public void update(Usuario usuario) throws SQLException {

@@ -74,21 +74,22 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
         try {
-            Connection conexao = (Connection) new Conexao().getConnection();            
-            UsuarioDAO usuarioDao = new UsuarioDAO((java.sql.Connection) conexao);
+            java.sql.Connection conexao = new Conexao().getConnection();
+            UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
             
             //Teste Insert
             Usuario usuarioInsert = new Usuario("testeUsuarioInsert", "654321");
-//            Usuario usuarioInserido = usuarioDao.insert(usuarioInsert);
-            Usuario usuarioInserido = null;
+            Usuario usuarioInserido = usuarioDao.insert(usuarioInsert);
+            //Usuario usuarioInserido = null;
             
             
             //Teste Select Id
-            Usuario usuarioSelecionado = usuarioDao.selectPorId(usuarioInserido);
+//            Usuario usuarioSelecionado = usuarioDao.selectPorId(usuarioInserido);
             
             //Teste Delete
-            usuarioDao.delete(usuarioSelecionado);
+//            usuarioDao.delete(usuarioSelecionado);
             
             //Teste Select all
             
