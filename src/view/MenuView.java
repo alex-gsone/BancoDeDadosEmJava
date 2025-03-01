@@ -81,10 +81,15 @@ public class MenuView extends javax.swing.JFrame {
             //Teste Insert
             Usuario usuarioInsert = new Usuario("testeUsuarioInsert", "654321");
 //            Usuario usuarioInserido = usuarioDao.insert(usuarioInsert);
+            Usuario usuarioInserido = null;
             
             
             //Teste Select Id
+            Usuario usuarioSelecionado = usuarioDao.selectPorId(usuarioInserido);
+            
             //Teste Delete
+            usuarioDao.delete(usuarioSelecionado);
+            
             //Teste Select all
             
         } catch (SQLException ex) {
