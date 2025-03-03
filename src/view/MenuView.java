@@ -77,6 +77,7 @@ public class MenuView extends javax.swing.JFrame {
         
         try {
             java.sql.Connection conexao = new Conexao().getConnection();
+            
             UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
             
             //Teste Insert
@@ -86,10 +87,10 @@ public class MenuView extends javax.swing.JFrame {
             
             
             //Teste Select Id
-//            Usuario usuarioSelecionado = usuarioDao.selectPorId(usuarioInserido);
+            Usuario usuarioSelecionado = usuarioDao.selectPorId(usuarioInserido);
             
             //Teste Delete
-//            usuarioDao.delete(usuarioSelecionado);
+            usuarioDao.delete(usuarioSelecionado);
             
             //Teste Select all
             
