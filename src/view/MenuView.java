@@ -76,8 +76,7 @@ public class MenuView extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         
         try {
-            java.sql.Connection conexao = new Conexao().getConnection();
-            
+            java.sql.Connection conexao = new Conexao().getConnection();           
             UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
             
             //Teste Insert
