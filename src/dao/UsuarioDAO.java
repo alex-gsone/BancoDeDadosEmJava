@@ -32,7 +32,7 @@ public class UsuarioDAO {
 
     public Usuario insert(Usuario usuario) throws SQLException {
 
-        String sql = "insert into usuario (usuario, senha) values(?, ?);";
+        String sql = "insert into usuario (usuario, senha) values(?, ?)RETURNING id;";
         PreparedStatement statement = connection.prepareStatement(sql);
 
         statement.setString(1, usuario.getUsuario());

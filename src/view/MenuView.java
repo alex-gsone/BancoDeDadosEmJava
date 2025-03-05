@@ -80,7 +80,7 @@ public class MenuView extends javax.swing.JFrame {
             UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
             
             //Teste Insert
-            Usuario usuarioInsert = new Usuario("testeUsuarioInsert", "654321");
+            Usuario usuarioInsert = new Usuario("testeUsuarioInsert22", "654321");
             Usuario usuarioInserido = usuarioDao.insert(usuarioInsert);
             //Usuario usuarioInserido = null;
             
