@@ -30,18 +30,23 @@ public class UsuarioDAO {
         this.connection = connection;
     }
 
-    public Usuario insert(Usuario usuario) throws SQLException {
-
-        String sql = "insert into usuario (usuario, senha) values(?, ?)RETURNING id;";
-        PreparedStatement statement = connection.prepareStatement(sql);
-
+public Usuario insert(Usuario usuario) throws SQLException {
+    String sql = "INSERT INTO usuario (usuario, senha) VALUES (?, ?) RETURNING id;";
+    
+    try (PreparedStatement statement = connection.prepareStatement(sql)) {
         statement.setString(1, usuario.getUsuario());
         statement.setString(2, usuario.getSenha());
-        statement.execute();
         
-        return usuario;
-        
+        try (ResultSet rs = statement.executeQuery()) {
+            if (rs.next()) {
+                usuario.setId(rs.getInt("id")); // Atualiza o ID do objeto
+            }
+        }
     }
+    
+    return usuario;
+}
+
 
     public void update(Usuario usuario) throws SQLException {
 
