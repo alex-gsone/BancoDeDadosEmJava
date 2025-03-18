@@ -9,6 +9,7 @@ import com.sun.jdi.connect.spi.Connection;
 import dao.Conexao;
 import dao.UsuarioDAO;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Usuario;
@@ -92,6 +93,11 @@ public class MenuView extends javax.swing.JFrame {
             usuarioDao.delete(usuarioSelecionado);
             
             //Teste Select all
+            ArrayList<Usuario> usuarios = usuarioDao.selectAll();
+            
+            for (Usuario usuario : usuarios) {
+                System.out.println(usuario);                
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
