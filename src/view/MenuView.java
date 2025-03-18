@@ -96,7 +96,7 @@ public class MenuView extends javax.swing.JFrame {
             ArrayList<Usuario> usuarios = usuarioDao.selectAll();
             
             for (Usuario usuario : usuarios) {
-                System.out.println(usuario);                
+                System.out.println(usuario.getUsuario());                
             }
             
         } catch (SQLException ex) {
