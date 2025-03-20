@@ -85,7 +85,6 @@ public class MenuView extends javax.swing.JFrame {
             Usuario usuarioInserido = usuarioDao.insert(usuarioInsert);
             //Usuario usuarioInserido = null;
             
-            
             //Teste Select Id
             Usuario usuarioSelecionado = usuarioDao.selectPorId(usuarioInserido);
             
